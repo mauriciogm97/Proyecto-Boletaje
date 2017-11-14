@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1510684668 source:c:\users\a01281897\desktop\proyectoboletaje\main.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<iomanip>
+	<ctime>
+	"Deporte.h"
+	"Concierto.h"
+	"Familiar.h"
+	"TeatroCultura.h"
+	"Usuario.h"
+
+1510685082 c:\users\a01281897\desktop\proyectoboletaje\include\evento.h
+	"Date.h"
+	"Boleto.h"
+
+1510002357 c:\users\a01281897\desktop\proyectoboletaje\include\datetime.h
+	"Date.h"
+
+1510682785 c:\users\a01281897\desktop\proyectoboletaje\include\date.h
+
+1510684556 c:\users\a01281897\desktop\proyectoboletaje\include\deporte.h
+	"Evento.h"
+	"Date.h"
+
+1510684578 c:\users\a01281897\desktop\proyectoboletaje\include\concierto.h
+	"Evento.h"
+
+1510684615 c:\users\a01281897\desktop\proyectoboletaje\include\familiar.h
+	"Evento.h"
+
+1510684636 c:\users\a01281897\desktop\proyectoboletaje\include\teatrocultura.h
+	"Evento.h"
+
+1510684324 c:\users\a01281897\desktop\proyectoboletaje\include\usuario.h
+	<string>
+
+1510685004 c:\users\a01281897\desktop\proyectoboletaje\include\boleto.h
+	"Evento.h"
+
