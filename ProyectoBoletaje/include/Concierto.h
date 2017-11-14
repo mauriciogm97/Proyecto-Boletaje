@@ -10,7 +10,7 @@ class Concierto : public Evento{
 
     public:
         // Constructor
-        Concierto(string, Date, string, string, string, char);
+        Concierto(string, Date, string, string, string);
         // Getters
         string getArtista();
         string getGenero();
@@ -29,7 +29,7 @@ void Concierto:: muestra(){
     cout << endl;
 }
 
-Concierto::Concierto(string lugar, Date fecha, string artista, string genero, string ciudad, char cat): Evento(lugar, fecha, ciudad, cat){
+Concierto::Concierto(string lugar, Date fecha, string artista, string genero, string ciudad): Evento(lugar, fecha, ciudad){
     this->artista = artista;
     this->genero = genero;
 }

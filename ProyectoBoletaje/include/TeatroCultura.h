@@ -10,7 +10,7 @@ class TeatroCultura : public Evento{
 
     public:
         // Constructor
-        TeatroCultura(string, Date, string, string, string, char);
+        TeatroCultura(string, Date, string, string, string);
         // Getters
         string getCategoria();
         string getNombre();
@@ -29,7 +29,7 @@ void TeatroCultura:: muestra(){
     cout << endl;
 }
 
-TeatroCultura::TeatroCultura(string lugar, Date fecha, string categoria, string nombre, string ciudad, char cat): Evento(lugar, fecha, ciudad, cat){
+TeatroCultura::TeatroCultura(string lugar, Date fecha, string categoria, string nombre, string ciudad): Evento(lugar, fecha, ciudad){
     this->categoria = categoria;
     this->nombre = nombre;
 }

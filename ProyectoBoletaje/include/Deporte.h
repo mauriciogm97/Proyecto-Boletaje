@@ -11,7 +11,7 @@ class Deporte : public Evento{
 
     public:
         // Constructor
-        Deporte(string, Date, string, string, string, char);
+        Deporte(string, Date, string, string, string);
         // Getters
         string getCategoria();
         string getDetalles();
@@ -30,7 +30,7 @@ void Deporte:: muestra(){
     cout << endl;
 }
 
-Deporte::Deporte(string lugar, Date fecha, string categoria, string detalles, string ciudad, char cat): Evento(lugar, fecha, ciudad, cat){
+Deporte::Deporte(string lugar, Date fecha, string categoria, string detalles, string ciudad): Evento(lugar, fecha, ciudad){
     this->categoria = categoria;
     this->detalles = detalles;
 }

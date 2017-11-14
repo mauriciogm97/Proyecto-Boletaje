@@ -18,7 +18,6 @@ time_t now = time(0);
 tm *ltm = localtime(&now);
 Date hoy(ltm->tm_mday, 1 + ltm->tm_mon, 1900 + ltm->tm_year);
 
-
 void iniciarSistema(){
     // Bienvenida y despliegue de fecha;
     cout << "Bienvenido a su sistema TicketMaster" << endl;

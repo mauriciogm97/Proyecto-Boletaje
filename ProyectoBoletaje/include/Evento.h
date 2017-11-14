@@ -9,17 +9,19 @@ using namespace std;
 class Evento{
 
 protected:
-    string name;
+    string nombre;
     string lugar;
     string ciudad;
     Date fecha;
     vector<Boleto> boletos;
+    char tipo;
 
 public:
     // Constructores
     Evento() = default;
-    Evento(string lugar, Date fecha, string ciudad);
+    Evento(string, string, string, Date, char);
     // Getters
+    string getNombre() {return nombre;}
     string getLugar() {return lugar;}
     string getCiudad() {return ciudad;}
     Date getFecha() {return fecha;}
@@ -30,11 +32,12 @@ public:
 
 };
 
-Evento::Evento(string lugar, Date fecha, string ciudad) {
+Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char tipo) {
+    this->nombre = nombre;
     this->lugar = lugar;
-    this->fecha = fecha;
     this->ciudad = ciudad;
-
+    this->fecha = fecha;
+    this->tipo = tipo;
 }
 
 Evento::addBoleto(double precio, int disponibilidad){

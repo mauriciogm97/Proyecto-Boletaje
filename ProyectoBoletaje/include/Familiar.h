@@ -10,7 +10,7 @@ class Familiar : public Evento{
 
     public:
         // Constructor
-        Familiar(string, Date, string, string, string, char);
+        Familiar(string, Date, string, string, string);
         // Getters
         string getCategoria();
         string getNombre();
@@ -29,7 +29,7 @@ void Familiar:: muestra(){
     cout << endl;
 }
 
-Familiar::Familiar(string lugar, Date fecha, string categoria, string nombre, string ciudad, char cat): Evento(lugar, fecha, ciudad, cat){
+Familiar::Familiar(string lugar, Date fecha, string categoria, string nombre, string ciudad): Evento(lugar, fecha, ciudad){
     this->categoria = categoria;
     this->nombre = nombre;
 }
