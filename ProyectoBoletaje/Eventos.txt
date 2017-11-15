@@ -1,4 +1,4 @@
-C Bruno_Mars Arena_Mty Monterrey 21 11 2017 17 00 
-D Estadio_Rayados 19 11 2017 19 30 Futbol Rayados_vs_Tigres Monterrey
-T Broadway 30 11 2017 16 15 Comedia Los_Locos_Adams New_York
-F SPI_Hotel 1 12 2017 12 00 Al_aire_libre Pool_Party South_Padre_Island
+C Bruno_Mars Arena_Mty Monterrey 21 11 2017 17 00
+D Rayados_vs_Tigres Estadio_Mty Monterrey 19 11 2017 19 30
+T Los_Locos_Adams Broadway Nueva York 30 11 2017 16 15
+F Al_aire_libre SPI_Hotel South_Padre_Island 1 12 2017 12 00

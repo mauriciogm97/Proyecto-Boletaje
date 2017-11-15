@@ -1,4 +1,3 @@
-Bruno_Mars 2 100 1000 200 1000
-Rayados_vs_Tigres 2 100 1000 200 1000
-Los_Locos_Adams 2 100 1000 200 1000
-Pool_Party 2 100 1000 200 1000
+Bruno_Mars 2 100 1000 300 2000
+Rayados_vs_Tigres 2 100 1000 300 2000
+Los_Locos_Adams 2 100 1000 300 2000

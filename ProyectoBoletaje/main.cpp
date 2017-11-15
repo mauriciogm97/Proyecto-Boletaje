@@ -31,19 +31,22 @@ void iniciarSistema(){
     while (fin >> tipo){
         fin >> nombre >> lugar >> ciudad >> d >> m >> a >> h >> min;
         Date fecha(d, m, a, h, min);
-        eventos.push_back(Evento(nombre, lugar, ciudad, fecha, 'C'));
+        eventos.push_back(Evento(nombre, lugar, ciudad, fecha, tipo));
     }
     fin.close();
 
     // Lectura archivo boletos
     int cant, disponibilidad;
     double precio;
-    fin.open("Usuarios.txt");
+    fin.open("Boletos.txt");
     while (fin >> nombre){
-        fin >> cant >> precio >> disponibilidad;
-        for (int x = 0; x < eventos.size(); x++){
-            if (nombre == eventos[x].getNombre()){
-                eventos[x].addBoleto(precio, disponibilidad);
+        fin >> cant;
+        for (int i = 0; i < eventos.size(); i++){
+            if (nombre == eventos[i].getNombre()){
+                for (int j = 0; j < cant; j++){
+                    fin >> precio >> disponibilidad;
+                    eventos[i].addBoleto(precio, disponibilidad);
+                }
             }
         }
     }
@@ -181,6 +184,7 @@ Evento* despliegaMenu(){
                     break;
                 }
             }
+            break;
         }
 
         //BUSQUEDA POR CIUDAD
