@@ -34,7 +34,7 @@ public:
     string salvaBoletos();
 };
 
-Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char tipo){
+Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char categoria){
     this->nombre = nombre;
     this->lugar = lugar;
     this->ciudad = ciudad;

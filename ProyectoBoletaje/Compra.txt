@@ -1,6 +1,6 @@
-Entrada: 
+Entrada: Bruno_Mars
 Fecha: 21/11/2017 - 17:0
-Lugar:  Monterrey
+Lugar: Arena_Mty Monterrey
 Precio: $100
 Cantidad comprada: 1
 Cobro: $100
