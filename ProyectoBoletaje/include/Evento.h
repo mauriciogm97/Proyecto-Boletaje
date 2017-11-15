@@ -1,6 +1,7 @@
 #ifndef Evento_h
 #define Evento_h
 
+#include <sstream>
 #include "Date.h"
 #include "Boleto.h"
 
@@ -30,6 +31,7 @@ public:
     void addBoleto(double, int);
     void muestra(int);
     Boleto* muestraBoletos();
+    string salvaBoletos();
 };
 
 Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char tipo){
@@ -51,6 +53,7 @@ void Evento::muestra(int num){
     fecha.printFecha();
     fecha.printHora();
 }
+
 Boleto* Evento::muestraBoletos(){
     int seleccion;
     for (int x = 0; x < boletos.size(); x++){
@@ -63,6 +66,16 @@ Boleto* Evento::muestraBoletos(){
     }
     cout << "No se selecciono boleto" << endl;
     return NULL;
+}
+
+string Evento::salvaBoletos(){
+    stringstream str;
+    str << nombre << " " << boletos.size();
+    for (int x = 0; x < boletos.size(); x++){
+        str << " " << boletos[x].getPrecio() << " " << boletos[x].getDisponibilidad();
+    }
+    str << endl;
+    return str.str();
 }
 
 #endif

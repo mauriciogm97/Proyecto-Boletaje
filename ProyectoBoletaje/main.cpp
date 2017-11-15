@@ -25,7 +25,7 @@ void iniciarSistema(){
     // Lectura de archivo eventos
     ifstream fin;
     fin.open("Eventos.txt");
-    int d, m, a, h, min, disp;
+    int d, m, a, h, min;
     char tipo;
     string nombre, lugar, ciudad;
     while (fin >> tipo){
@@ -38,7 +38,6 @@ void iniciarSistema(){
     // Lectura archivo boletos
     int cant, disponibilidad;
     double precio;
-    Evento* evento = NULL;
     fin.open("Usuarios.txt");
     while (fin >> nombre){
         fin >> cant >> precio >> disponibilidad;
@@ -264,6 +263,10 @@ Evento* despliegaMenu(){
     return NULL;
 }
 
+void outputCompra(){
+
+}
+
 void realizaCompra(Evento evento){
     int count = 0, cant, confirm;
     cout << "A continuacion se presentan los boletos disponibles" << endl;
@@ -271,10 +274,12 @@ void realizaCompra(Evento evento){
     if (compra){
         cout << "Digite la cantidad de boletos a comprar" << endl;
         cin >> cant;
-        cout << "confirme su compra presionando 1, u otro boton para cancelar" << endl;
+        cout << "Confirme su compra presionando 1, u otro boton para cancelar" << endl;
         cin >> confirm;
         if (confirm == 1){
             compra->retira(cant);
+            outputCompra();
+            cout << "Se creo archivo con informacion de compra" << endl;
         } else {
             cout << "Compra cancelada" << endl;
         }
@@ -282,11 +287,12 @@ void realizaCompra(Evento evento){
 }
 
 void cerrarSistema(){
+    // Reescribe archivo de boletos
     ofstream fout;
-
-    // File boletos
-    fout.open("Usuarios.txt");
-
+    fout.open("Boletos.txt");
+    for (int x = 0; x < eventos.size(); x++){
+        fout << eventos[x].salvaBoletos();
+    }
     fout.close();
 }
 
