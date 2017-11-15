@@ -263,8 +263,14 @@ Evento* despliegaMenu(){
     return NULL;
 }
 
-void outputCompra(){
-
+void outputCompra(Evento evento, Boleto boleto){
+    ofstream fout;
+    fout.open("Compra.txt");
+    fout << "Entrada: " << evento.getNombre() << endl;
+    fout << "Fecha: " << evento.getFecha().getFechaStr() << endl;
+    fout << "Lugar: " << evento.getLugar() << " " << evento.getCiudad() << endl;
+    fout << "Precio " << "$" << boleto.getPrecio() << endl;
+    fout.close();
 }
 
 void realizaCompra(Evento evento){
@@ -278,7 +284,7 @@ void realizaCompra(Evento evento){
         cin >> confirm;
         if (confirm == 1){
             compra->retira(cant);
-            outputCompra();
+            outputCompra(evento, *compra);
             cout << "Se creo archivo con informacion de compra" << endl;
         } else {
             cout << "Compra cancelada" << endl;
@@ -298,6 +304,7 @@ void cerrarSistema(){
 
 int main(){
     iniciarSistema();
+
     autenticacion();
 
     Evento *seleccion = new Evento;
