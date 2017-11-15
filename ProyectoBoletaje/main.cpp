@@ -267,32 +267,25 @@ Evento* despliegaMenu(){
     return NULL;
 }
 
-void outputCompra(Evento evento, Boleto boleto){
+void outputCompra(Evento evento, Boleto boleto, int cant){
     ofstream fout;
     fout.open("Compra.txt");
     fout << "Entrada: " << evento.getNombre() << endl;
     fout << "Fecha: " << evento.getFecha().getFechaStr() << endl;
     fout << "Lugar: " << evento.getLugar() << " " << evento.getCiudad() << endl;
-    fout << "Precio " << "$" << boleto.getPrecio() << endl;
+    fout << "Precio: $" << boleto.getPrecio() << endl;
+    fout << "Cantidad comprada: " << cant << endl;
+    fout << "Cobro: $" << boleto.getPrecio() * cant << endl;
     fout.close();
 }
 
 void realizaCompra(Evento evento){
-    int count = 0, cant, confirm;
+    int count = 0, confirm, cant;
     cout << "A continuacion se presentan los boletos disponibles" << endl;
-    Boleto *compra = evento.muestraBoletos();
+    Boleto *compra = evento.compraBoletos(cant);
     if (compra){
-        cout << "Digite la cantidad de boletos a comprar" << endl;
-        cin >> cant;
-        cout << "Confirme su compra presionando 1, u otro boton para cancelar" << endl;
-        cin >> confirm;
-        if (confirm == 1){
-            compra->retira(cant);
-            outputCompra(evento, *compra);
-            cout << "Se creo archivo con informacion de compra" << endl;
-        } else {
-            cout << "Compra cancelada" << endl;
-        }
+        outputCompra(evento, *compra, cant);
+        cout << "Se creo archivo con informacion de compra" << endl;
     }
 }
 

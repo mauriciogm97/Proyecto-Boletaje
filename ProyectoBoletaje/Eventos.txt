@@ -1,4 +1,4 @@
 C Bruno_Mars Arena_Mty Monterrey 21 11 2017 17 00
 D Rayados_vs_Tigres Estadio_Mty Monterrey 19 11 2017 19 30
-T Los_Locos_Adams Broadway Nueva York 30 11 2017 16 15
+T Los_Locos_Adams Broadway Nueva_York 30 11 2017 16 15
 F Al_aire_libre SPI_Hotel South_Padre_Island 1 12 2017 12 00

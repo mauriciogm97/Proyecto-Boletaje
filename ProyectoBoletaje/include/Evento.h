@@ -30,7 +30,7 @@ public:
     //Metodos
     void addBoleto(double, int);
     void muestra(int);
-    Boleto* muestraBoletos();
+    Boleto* compraBoletos(int&);
     string salvaBoletos();
 };
 
@@ -54,17 +54,31 @@ void Evento::muestra(int num){
     fecha.printHora();
 }
 
-Boleto* Evento::muestraBoletos(){
-    int seleccion;
+Boleto* Evento::compraBoletos(int &cant){
+    if (boletos.empty()){
+        cout << "Ya no hay boletos disponibles" << endl;
+        return NULL;
+    }
+    int seleccion, confirm;
     for (int x = 0; x < boletos.size(); x++){
-        cout << "Opcion #" << x << " Precio: " << boletos[x].getPrecio() << endl;
+        if (boletos[x].getDisponibilidad() > 0){
+            cout << "Opcion #" << x << " Precio: " << boletos[x].getPrecio() << endl;
+        }
     }
     cout << "Seleccione el boleto a comprar con el numero de opcion" << endl;
     cin >> seleccion;
     if (seleccion >= 0 && seleccion < boletos.size()){
-        return &boletos[seleccion];
+        cout << "Digite la cantidad de boletos a comprar" << endl;
+        cin >> cant;
+        cout << "Confirme su compra presionando 1, u otro boton para cancelar" << endl;
+        cin >> confirm;
+        if (confirm == 1){
+            boletos[seleccion].retira(cant);
+            cout << boletos[seleccion].getDisponibilidad() << endl;
+            return &boletos[seleccion];
+        }
     }
-    cout << "No se selecciono boleto" << endl;
+    cout << "No se realizo compra" << endl;
     return NULL;
 }
 
