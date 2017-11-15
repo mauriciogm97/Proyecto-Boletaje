@@ -101,11 +101,11 @@ void autenticacion(){
     }while(!autenticado);
 }
 
-Evento* despliegaMenu(){
+Evento* despliegaMenu(char &iOpcion){
 
     int seleccion = 0, eleccion;
     vector<Evento> mostrados;
-    char iOpcion, tipo, opcfecha;
+    char tipo, opcfecha;
     string ubicacion;
     cout<<"\nMENU (Teclea el numero)\n---------------------\n1) Consultar eventos por fecha\n2) Consultar eventos por ubicacion\n3) Consultar evento por tipo\n4) Terminar\n";
     cin >> iOpcion;
@@ -317,9 +317,11 @@ int main(){
 
     autenticacion();
 
+    char opcion;
     Evento *seleccion = new Evento;
     do {
-        seleccion = despliegaMenu();
+        seleccion = despliegaMenu(opcion);
+        if (opcion == '4') return -1;
     } while (!seleccion);
 
     realizaCompra(*seleccion);
