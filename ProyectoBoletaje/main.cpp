@@ -132,7 +132,10 @@ Evento* despliegaMenu(){
                             encontrado = true;
                         }
                     }
-                    if(!encontrado) cout << "No hay eventos el dia de hoy." << endl;
+                    if(!encontrado){
+                        cout << "No hay eventos el dia de hoy." << endl;
+                        return NULL;
+                    }
                     break;
                 }
 
@@ -147,7 +150,10 @@ Evento* despliegaMenu(){
                             encontrado = true;
                         }
                     }
-                    if(!encontrado) cout << "No hay eventos esta semana." << endl;
+                    if(!encontrado){
+                        cout << "No hay eventos esta semana." << endl;
+                        return NULL;
+                    }
                     break;
                 }
 
@@ -161,7 +167,10 @@ Evento* despliegaMenu(){
                             encontrado = true;
                         }
                     }
-                    if(!encontrado) cout << "No hay eventos este mes." << endl;
+                    if(!encontrado){
+                        cout << "No hay eventos este mes." << endl;
+                        return NULL;
+                    }
                     break;
                 }
 
@@ -175,13 +184,16 @@ Evento* despliegaMenu(){
                             encontrado = true;
                         }
                     }
-                    if(!encontrado) cout << "No hay eventos este mes." << endl;
+                    if(!encontrado){
+                        cout << "No hay eventos este mes." << endl;
+                        return NULL;
+                    }
                     break;
                 }
 
                 default:{
                     cout << "Esa opcion no existe." << endl;
-                    break;
+                    return NULL;
                 }
             }
             break;
@@ -202,6 +214,7 @@ Evento* despliegaMenu(){
             }
             if (!encontrado) {
                 cout << "La ciudad " << ubicacion << " no existe." << endl;
+                return NULL;
             }
             break;
         }
@@ -246,7 +259,7 @@ Evento* despliegaMenu(){
                     break;
                 default:
                     cout << "Esa opcion no existe." << endl;
-                    break;
+                    return NULL;
             }
             break;
         }

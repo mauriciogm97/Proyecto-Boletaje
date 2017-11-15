@@ -1,2 +1,3 @@
 mauricio.gm@outlook.com 12345678 Mauricio Guadiana
 juan@outlook.com 12345678 Juan Perez
+arnulfo@gmail.com 12345678 Arnulfo Gonzalez
