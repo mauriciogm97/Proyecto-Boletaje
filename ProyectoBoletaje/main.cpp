@@ -4,15 +4,12 @@
 #include <iomanip>
 #include <ctime>
 
-#include "Deporte.h"
-#include "Concierto.h"
-#include "Familiar.h"
-#include "TeatroCultura.h"
+#include "Evento.h"
 #include "Usuario.h"
 
 using namespace std;
 
-vector<Evento*> eventos;
+vector<Evento> eventos;
 vector<Usuario> usuarios;
 time_t now = time(0);
 tm *ltm = localtime(&now);
@@ -28,63 +25,27 @@ void iniciarSistema(){
     // Lectura de archivo eventos
     ifstream fin;
     fin.open("Eventos.txt");
-    int cant, d, m, a, h, min, disp;
+    int d, m, a, h, min, disp;
     char tipo;
-    string lugar, ciudad;
-    fin >> cant;
-
-    for (int i = 0; i < cant; i++){
-
-        fin >> tipo >> lugar >> d >> m >> a >> h >> min;
+    string nombre, lugar, ciudad;
+    while (fin >> tipo){
+        fin >> nombre >> lugar >> ciudad >> d >> m >> a >> h >> min;
         Date fecha(d, m, a, h, min);
-
-        switch (tipo){
-
-            case 'C':{
-                string genero, artista;
-                fin >> genero >> artista >> ciudad;
-                Evento *evento = new Concierto (lugar, fecha, artista, genero, ciudad, 'C');
-                eventos.push_back(evento);
-                break;
-            }
-
-            case 'D':{
-                string categoria, detalles;
-                fin >> categoria >> detalles >> ciudad;
-                Evento *evento = new Deporte (lugar, fecha, categoria, detalles, ciudad, 'D');
-                eventos.push_back(evento);
-                break;
-            }
-
-            case 'T':{
-                string categoria, nombre;
-                fin >> categoria >> nombre >> ciudad;
-                Evento *evento = new TeatroCultura (lugar, fecha, categoria, nombre, ciudad, 'T');
-                eventos.push_back(evento);
-                break;
-            }
-
-            case 'F':{
-                string categoria, nombre;
-                fin >> categoria >> nombre >> ciudad;
-                Evento *evento = new Familiar (lugar, fecha, categoria, nombre, ciudad, 'F');
-                eventos.push_back(evento);
-                break;
-            }
-        }
+        eventos.push_back(Evento(nombre, lugar, ciudad, fecha, 'C'));
     }
     fin.close();
 
     // Lectura archivo boletos
-    string nombre;
-    int disponibilidad;
+    int cant, disponibilidad;
     double precio;
     Evento* evento = NULL;
     fin.open("Usuarios.txt");
     while (fin >> nombre){
-        fin >> cant;
+        fin >> cant >> precio >> disponibilidad;
         for (int x = 0; x < eventos.size(); x++){
-            if (nombre == eventos[x]->nombre)
+            if (nombre == eventos[x].getNombre()){
+                eventos[x].addBoleto(precio, disponibilidad);
+            }
         }
     }
 
@@ -98,12 +59,6 @@ void iniciarSistema(){
         usuarios.push_back(Usuario(mail, pass, nombre, apellido));
     }
     fin.close();
-}
-
-void cerrarSistema(){
-    //ofstream fout;
-    //fout.open("Eventos.txt");
-    //fout.close();
 }
 
 void autenticacion(){
@@ -146,6 +101,8 @@ void autenticacion(){
 
 Evento* despliegaMenu(){
 
+    int seleccion = 0, eleccion;
+    vector<Evento> mostrados;
     char iOpcion, tipo, opcfecha;
     string ubicacion;
     cout<<"\nMENU (Teclea el numero)\n---------------------\n1) Consultar eventos por fecha\n2) Consultar eventos por ubicacion\n3) Consultar evento por tipo\n4) Terminar\n";
@@ -166,9 +123,10 @@ Evento* despliegaMenu(){
                 //Eventos de hoy
                 case '1':{
                     bool encontrado = false;
-                    for (int i=0; i < eventos.size(); i++){
-                        if (eventos[i]->getFecha() == hoy) {
-                            eventos[i]->muestra();
+                    for (int i=0; i<eventos.size(); i++){
+                        if (eventos[i].getFecha() == hoy) {
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
                             encontrado = true;
                         }
                     }
@@ -181,8 +139,9 @@ Evento* despliegaMenu(){
                     bool encontrado = false;
                     Date fecha2 = hoy+7;
                     for (int i=0; i<eventos.size(); i++){
-                        if (eventos[i]->getFecha() >= hoy && eventos[i]->getFecha() <= fecha2) {
-                            eventos[i]->muestra();
+                        if (eventos[i].getFecha() >= hoy && eventos[i].getFecha() <= fecha2) {
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
                             encontrado = true;
                         }
                     }
@@ -194,8 +153,9 @@ Evento* despliegaMenu(){
                 case '3':{
                     bool encontrado = false;
                     for (int i=0; i<eventos.size(); i++){
-                        if (eventos[i]->getFecha().getMes() == 1 + ltm->tm_mon) {
-                            eventos[i]->muestra();
+                        if (eventos[i].getFecha().getMes() == 1 + ltm->tm_mon) {
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
                             encontrado = true;
                         }
                     }
@@ -207,8 +167,9 @@ Evento* despliegaMenu(){
                 case '4':{
                     bool encontrado = false;
                     for (int i=0; i<eventos.size(); i++){
-                        if (eventos[i]->getFecha().getYear()== 1900 + ltm->tm_year) {
-                            eventos[i]->muestra();
+                        if (eventos[i].getFecha().getYear()== 1900 + ltm->tm_year) {
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
                             encontrado = true;
                         }
                     }
@@ -221,7 +182,6 @@ Evento* despliegaMenu(){
                     break;
                 }
             }
-            break;
         }
 
         //BUSQUEDA POR CIUDAD
@@ -231,8 +191,9 @@ Evento* despliegaMenu(){
             cout << endl;
             bool encontrado = false;
             for (int i=0; i<eventos.size(); i++){
-                if (eventos[i]->getCiudad() == ubicacion){
-                    eventos[i]->muestra();
+                if (eventos[i].getCiudad() == ubicacion){
+                    eventos[i].muestra(seleccion++);
+                    mostrados.push_back(eventos[i]);
                     encontrado = true;
                 }
             }
@@ -250,22 +211,34 @@ Evento* despliegaMenu(){
             switch(tipo){
                 case '1':
                     for (int i=0; i<eventos.size(); i++){
-                        if (eventos[i]->getCategoria()=='D') eventos[i]->muestra();
+                        if (eventos[i].getCategoria()=='D'){
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
+                        }
                     }
                     break;
                 case '2':
                     for (int i=0; i<eventos.size(); i++){
-                        if (eventos[i]->getCategoria()=='C') eventos[i]->muestra();
+                        if (eventos[i].getCategoria()=='C'){
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
+                        }
                     }
                     break;
                 case '3':
                     for (int i=0; i<eventos.size(); i++){
-                        if (eventos[i]->getCategoria()=='F') eventos[i]->muestra();
+                        if (eventos[i].getCategoria()=='F'){
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
+                        }
                     }
                     break;
                 case '4':
                     for (int i=0; i<eventos.size(); i++){
-                        if (eventos[i]->getCategoria()=='T') eventos[i]->muestra();
+                        if (eventos[i].getCategoria()=='T'){
+                            eventos[i].muestra(seleccion++);
+                            mostrados.push_back(eventos[i]);
+                        }
                     }
                     break;
                 default:
@@ -276,24 +249,43 @@ Evento* despliegaMenu(){
         }
 
         case '4':
-            break;
+            return NULL;
 
         default:
             cout << "Esa opcion no existe." << endl;
-            break;
+            return NULL;
     }
+    cout << "Seleccione el evento por su numero" << endl;
+    cin >> eleccion;
+    if (eleccion >= 0 && eleccion < mostrados.size()){
+        return &mostrados[eleccion];
+    }
+    cout << "Seleccion incorrecta" << endl;
+    return NULL;
 }
 
+void realizaCompra(Evento evento){
+    int count = 0;
+    cout << "A continuacion se presentan los boletos disponibles" << endl;
+    evento.retiraBoleto();
+}
+
+void cerrarSistema(){
+    //ofstream fout;
+    //fout.open("Eventos.txt");
+    //fout.close();
+}
 
 int main(){
     iniciarSistema();
     autenticacion();
 
-    Evento *evento = NULL;
-    while(evento == NULL){
-        evento = despliegaMenu();
-    }
+    Evento *seleccion = new Evento;
+    do {
+        seleccion = despliegaMenu();
+    } while (!seleccion);
+
+    realizaCompra(*seleccion);
 
     cerrarSistema();
-
 }

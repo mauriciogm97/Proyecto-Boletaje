@@ -2,6 +2,7 @@
 #define Usuario_h
 
 #include <string>
+#include "Boleto.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class Usuario{
         void setEMail();
         void setPassword();
         void setNombreCompleto();
+        void addCompra(Boleto);
         // Getters
         string getEMail();
         bool checkPassword(string);
@@ -41,10 +43,10 @@ Usuario::Usuario(){
     setEMail();
     setPassword();
 
-    fstream fs;
+    /*fstream fs;
     fs.open ("Usuarios.txt", std::fstream::in | std::fstream::out | std::fstream::app);
     fs << eMail << " " << password << " " << nombre << " " << apellido << endl;
-    fs.close();
+    fs.close();*/
 }
 
 void Usuario::setEMail(){

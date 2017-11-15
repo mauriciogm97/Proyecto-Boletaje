@@ -14,7 +14,7 @@ protected:
     string ciudad;
     Date fecha;
     vector<Boleto> boletos;
-    char tipo;
+    char categoria;
 
 public:
     // Constructores
@@ -25,23 +25,39 @@ public:
     string getLugar() {return lugar;}
     string getCiudad() {return ciudad;}
     Date getFecha() {return fecha;}
-
+    char getCategoria() {return categoria;}
     //Metodos
-    virtual void muestra() = 0;
-    addBoleto(double, int);
+    void addBoleto(double, int);
+    void muestra(int);
+    void retiraBoleto();
 
 };
 
-Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char tipo) {
+Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char tipo){
     this->nombre = nombre;
     this->lugar = lugar;
     this->ciudad = ciudad;
     this->fecha = fecha;
-    this->tipo = tipo;
+    this->categoria = categoria;
 }
 
-Evento::addBoleto(double precio, int disponibilidad){
+void Evento::addBoleto(double precio, int disponibilidad){
     boletos.push_back(Boleto(precio,disponibilidad));
+}
+
+void Evento::muestra(int num){
+    cout << "Resultado #" << num << endl;
+    cout << nombre << endl;
+    cout << lugar << " " << ciudad << endl;
+    fecha.printFecha();
+    fecha.printHora();
+}
+
+void Evento::retiraBoleto(){
+    int seleccion;
+    for (int x = 0; x < boletos.size(); x++){
+        cout << "Precio"
+    }
 }
 
 #endif
