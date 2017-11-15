@@ -29,8 +29,7 @@ public:
     //Metodos
     void addBoleto(double, int);
     void muestra(int);
-    void retiraBoleto();
-
+    Boleto* muestraBoletos();
 };
 
 Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char tipo){
@@ -52,12 +51,18 @@ void Evento::muestra(int num){
     fecha.printFecha();
     fecha.printHora();
 }
-
-void Evento::retiraBoleto(){
+Boleto* Evento::muestraBoletos(){
     int seleccion;
     for (int x = 0; x < boletos.size(); x++){
-        cout << "Precio"
+        cout << "Opcion #" << x << " Precio: " << boletos[x].getPrecio() << endl;
     }
+    cout << "Seleccione el boleto a comprar con el numero de opcion" << endl;
+    cin >> seleccion;
+    if (seleccion >= 0 && seleccion < boletos.size()){
+        return &boletos[seleccion];
+    }
+    cout << "No se selecciono boleto" << endl;
+    return NULL;
 }
 
 #endif

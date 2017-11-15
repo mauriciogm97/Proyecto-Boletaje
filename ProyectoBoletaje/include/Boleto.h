@@ -18,7 +18,7 @@ class Boleto {
         double getPrecio() {return precio;}
         int getDisponibilidad() {return disponibilidad;}
         // Metodos
-        void retiraUno();
+        void retira(int);
 };
 
 Boleto::Boleto(double precio, int disponibilidad){
@@ -26,8 +26,8 @@ Boleto::Boleto(double precio, int disponibilidad){
     this->disponibilidad = disponibilidad;
 }
 
-void Boleto::retiraUno(){
-    disponibilidad--;
+void Boleto::retira(int cant){
+    disponibilidad -= cant;
 }
 
 #endif

@@ -265,15 +265,29 @@ Evento* despliegaMenu(){
 }
 
 void realizaCompra(Evento evento){
-    int count = 0;
+    int count = 0, cant, confirm;
     cout << "A continuacion se presentan los boletos disponibles" << endl;
-    evento.retiraBoleto();
+    Boleto *compra = evento.muestraBoletos();
+    if (compra){
+        cout << "Digite la cantidad de boletos a comprar" << endl;
+        cin >> cant;
+        cout << "confirme su compra presionando 1, u otro boton para cancelar" << endl;
+        cin >> confirm;
+        if (confirm == 1){
+            compra->retira(cant);
+        } else {
+            cout << "Compra cancelada" << endl;
+        }
+    }
 }
 
 void cerrarSistema(){
-    //ofstream fout;
-    //fout.open("Eventos.txt");
-    //fout.close();
+    ofstream fout;
+
+    // File boletos
+    fout.open("Usuarios.txt");
+
+    fout.close();
 }
 
 int main(){

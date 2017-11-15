@@ -42,11 +42,10 @@ Usuario::Usuario(){
     setNombreCompleto();
     setEMail();
     setPassword();
-
-    /*fstream fs;
+    fstream fs;
     fs.open ("Usuarios.txt", std::fstream::in | std::fstream::out | std::fstream::app);
     fs << eMail << " " << password << " " << nombre << " " << apellido << endl;
-    fs.close();*/
+    fs.close();
 }
 
 void Usuario::setEMail(){
