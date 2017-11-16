@@ -329,16 +329,16 @@ void realizaCompra(Evento* evento){
         do {
             cout << "Digite la cantidad de boletos a comprar" << endl;
             cin >> cant;
-            if (cant < compra->getDisponibilidad()){
+            if (cant > compra->getDisponibilidad()){
                 cout << "No hay tantos boletos disponibles" << endl;
             }
-        } while (cant < compra->getDisponibilidad());
+        } while (cant > compra->getDisponibilidad());
         cout << "Confirme su compra presionando 1, u otro boton para cancelar" << endl;
         cin >> confirm;
         if (confirm == 1){
             compra->retira(cant);
             outputCompra(*evento, *compra, cant);
-            cout << "Se creo archivo con informacion de compra" << endl;
+            cout << "Se creo archivo de recibo con la informacion de compra" << endl;
         }
     } else {
         cout << "No se realizo compra" << endl;
