@@ -18,6 +18,7 @@
 using namespace std;
 
 // Variables globales
+Usuario *usuario = NULL;
 vector<Evento> eventos;
 vector<Usuario> usuarios;
 time_t now = time(0);
@@ -90,6 +91,7 @@ void autenticacion(){
                 for (int x = 0; x < usuarios.size(); x++){
                     if (usuarios[x].getEMail() == mail && usuarios[x].checkPassword(pass)){
                         autenticado = true;
+                        usuario = &usuarios[x];
                         cout << "Bienvenido" << endl;
                     }
                 }
@@ -104,6 +106,7 @@ void autenticacion(){
                 cin >> mayor;
                 if (mayor == '1'){
                     usuarios.push_back(Usuario());
+                    usuario = &usuarios.back();
                     autenticado = true;
                     cout << "Usuario creado, bienvenido a TICKETMASTER" << endl;
                 } else {
@@ -301,6 +304,7 @@ void outputCompra(Evento evento, Boleto boleto, int cant){
     // Escritura de archivo
     ofstream fout;
     fout.open("Compra.txt");
+    fout << "Cliente: " << usuario->getNombre() << " " << usuario->getApellido() << endl;
     fout << "Entrada: " << evento.getNombre() << endl;
     fout << "Fecha: " << evento.getFecha().getFechaStr() << endl;
     fout << "Lugar: " << evento.getLugar() << " " << evento.getCiudad() << endl;
@@ -310,6 +314,7 @@ void outputCompra(Evento evento, Boleto boleto, int cant){
     fout.close();
     // Despliegue de info de compra al usuario
     cout << endl;
+    cout << "Cliente: " << usuario->getNombre() << " " << usuario->getApellido() << endl;
     cout << "Entrada: " << evento.getNombre() << endl;
     cout << "Fecha: " << evento.getFecha().getFechaStr() << endl;
     cout << "Lugar: " << evento.getLugar() << " " << evento.getCiudad() << endl;
