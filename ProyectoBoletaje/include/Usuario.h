@@ -2,7 +2,6 @@
 #define Usuario_h
 
 #include <string>
-#include "Boleto.h"
 
 using namespace std;
 

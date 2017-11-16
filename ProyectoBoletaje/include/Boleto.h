@@ -1,8 +1,6 @@
 #ifndef Boleto_h
 #define Boleto_h
 
-#include "Evento.h"
-
 using namespace std;
 
 class Boleto {
