@@ -12,10 +12,10 @@ class Boleto {
         int disponibilidad;
 
     public:
-        // Constructores
+        // Constructor
         Boleto(double, int);
         // Getters
-        double getPrecio() {return precio;}
+        double getPrecio()      {return precio;}
         int getDisponibilidad() {return disponibilidad;}
         // Metodos
         void retira(int);

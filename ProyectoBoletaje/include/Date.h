@@ -28,16 +28,14 @@ public:
     void printFecha();
     void printHora();
     string getFechaStr();
-
-    //Operadores
+    // Operadores
     Date operator+(int dias);
     bool operator>=(Date f);
     bool operator<=(Date f);
     bool operator==(Date f);
-
-    //Getter
-    int getYear(){return year;}
-    int getMes(){return mes;}
+    // Getter
+    int getYear()   {return year;}
+    int getMes()    {return mes;}
 };
 
 Date::Date(int dia, int mes , int year){

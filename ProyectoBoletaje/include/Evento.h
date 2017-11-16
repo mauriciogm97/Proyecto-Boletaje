@@ -22,15 +22,15 @@ public:
     Evento() = default;
     Evento(string, string, string, Date, char);
     // Getters
-    string getNombre() {return nombre;}
-    string getLugar() {return lugar;}
-    string getCiudad() {return ciudad;}
-    Date getFecha() {return fecha;}
-    char getCategoria() {return categoria;}
-    //Metodos
+    string getNombre()      {return nombre;}
+    string getLugar()       {return lugar;}
+    string getCiudad()      {return ciudad;}
+    Date getFecha()         {return fecha;}
+    char getCategoria()     {return categoria;}
+    // Metodos
     void addBoleto(double, int);
     void muestra(int);
-    Boleto* compraBoletos(int&);
+    Boleto* muestraBoletos();
     string salvaBoletos();
 };
 
@@ -54,7 +54,7 @@ void Evento::muestra(int num){
     fecha.printHora();
 }
 
-Boleto* Evento::compraBoletos(int &cant){
+Boleto* Evento::muestraBoletos(){
     if (boletos.empty()){
         cout << "Ya no hay boletos disponibles" << endl;
         return NULL;
@@ -62,23 +62,17 @@ Boleto* Evento::compraBoletos(int &cant){
     int seleccion, confirm;
     for (int x = 0; x < boletos.size(); x++){
         if (boletos[x].getDisponibilidad() > 0){
-            cout << "Opcion #" << x << " Precio: " << boletos[x].getPrecio() << endl;
+            cout << "Opcion #" << x << " Precio: " << boletos[x].getPrecio()
+                 << " Disponibilidad: " << boletos[x].getDisponibilidad() << endl;
         }
     }
-    cout << "Seleccione el boleto a comprar con el numero de opcion" << endl;
+    cout << "Seleccione el boleto a comprar con el numero de opcion"
+         << "Para cancelar teclea otro digito" << endl;
     cin >> seleccion;
     if (seleccion >= 0 && seleccion < boletos.size()){
-        cout << "Digite la cantidad de boletos a comprar" << endl;
-        cin >> cant;
-        cout << "Confirme su compra presionando 1, u otro boton para cancelar" << endl;
-        cin >> confirm;
-        if (confirm == 1){
-            boletos[seleccion].retira(cant);
-            cout << boletos[seleccion].getDisponibilidad() << endl;
-            return &boletos[seleccion];
-        }
+        return &boletos[seleccion];
     }
-    cout << "No se realizo compra" << endl;
+    cout << "No se selecciono boleto valido" << endl;
     return NULL;
 }
 

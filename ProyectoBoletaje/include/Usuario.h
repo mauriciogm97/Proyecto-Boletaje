@@ -24,11 +24,10 @@ class Usuario{
         void setNombreCompleto();
         void addCompra(Boleto);
         // Getters
-        string getEMail();
         bool checkPassword(string);
-        string getNombre();
-        string getApellido();
-        string getPais();
+        string getEMail()       {return eMail;}
+        string getNombre()      {return nombre;}
+        string getApellido()    {return apellido;}
 };
 
 Usuario::Usuario(string eMail, string password, string nombre, string apellido){
@@ -78,20 +77,8 @@ void Usuario::setNombreCompleto(){
     this->apellido = apellido;
 }
 
-string Usuario::getEMail(){
-    return eMail;
-}
-
 bool Usuario::checkPassword(string pass){
     return password == pass;
-}
-
-string Usuario::getNombre(){
-    return nombre;
-}
-
-string Usuario::getApellido(){
-    return apellido;
 }
 
 #endif
