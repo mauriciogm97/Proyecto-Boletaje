@@ -9,7 +9,7 @@ using namespace std;
 
 class Evento{
 
-protected:
+private:
     string nombre;
     string lugar;
     string ciudad;
@@ -20,7 +20,7 @@ protected:
 public:
     // Constructores
     Evento() = default;
-    Evento(string, string, string, Date, char);
+    Evento(string, string, string, char, int, int, int ,int ,int);
     // Getters
     string getNombre()      {return nombre;}
     string getLugar()       {return lugar;}
@@ -34,11 +34,11 @@ public:
     string salvaBoletos();
 };
 
-Evento::Evento(string nombre, string lugar, string ciudad, Date fecha, char categoria){
+Evento::Evento(string nombre, string lugar, string ciudad, char categoria, int d, int m, int a, int h, int min){
     this->nombre = nombre;
     this->lugar = lugar;
     this->ciudad = ciudad;
-    this->fecha = fecha;
+    fecha = Date(d, m, a, h, min);
     this->categoria = categoria;
 }
 

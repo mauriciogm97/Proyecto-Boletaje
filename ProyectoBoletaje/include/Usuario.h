@@ -21,7 +21,6 @@ class Usuario{
         void setEMail();
         void setPassword();
         void setNombreCompleto();
-        void addCompra(Boleto);
         // Getters
         bool checkPassword(string);
         string getEMail()       {return eMail;}

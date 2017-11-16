@@ -10,13 +10,13 @@ using namespace std;
 class Date{
 
 private:
-    bool validDate(int, int, int);
-    bool validHora(int, int);
     int dia;
     int mes;
     int year;
     int hora;
     int minuto;
+    bool validDate(int, int, int);
+    bool validHora(int, int);
     bool esBisiesto();
 
 public:

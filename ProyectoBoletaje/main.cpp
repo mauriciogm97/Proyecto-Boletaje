@@ -40,8 +40,7 @@ void iniciarSistema(){
     string nombre, lugar, ciudad;
     while (fin >> tipo){
         fin >> nombre >> lugar >> ciudad >> d >> m >> a >> h >> min;
-        Date fecha(d, m, a, h, min);
-        eventos.push_back(Evento(nombre, lugar, ciudad, fecha, tipo));
+        eventos.push_back(Evento(nombre, lugar, ciudad, tipo, d, m, a, h, min));
     }
     fin.close();
 

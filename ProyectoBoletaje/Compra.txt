@@ -1,6 +1,6 @@
-Entrada: Los_Locos_Adams
-Fecha: 30/11/2017 - 16:15
-Lugar: Broadway Nueva_York
+Entrada: Bruno_Mars
+Fecha: 21/11/2017 - 17:0
+Lugar: Arena_Mty Monterrey
 Precio: $300
 Cantidad comprada: 1
 Cobro: $300

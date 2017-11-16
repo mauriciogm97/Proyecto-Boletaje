@@ -39,7 +39,7 @@
 1510685004 c:\users\a01281897\desktop\proyectoboletaje\include\boleto.h
 	"Evento.h"
 
-1510790235 source:c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\main.cpp
+1510799119 source:c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\main.cpp
 	<iostream>
 	<vector>
 	<fstream>
@@ -48,16 +48,16 @@
 	"Evento.h"
 	"Usuario.h"
 
-1510790738 c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\include\evento.h
+1510804156 c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\include\evento.h
 	<sstream>
 	"Date.h"
 	"Boleto.h"
 
-1510790622 c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\include\date.h
+1510805280 c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\include\date.h
 	<sstream>
 
 1510797779 c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\include\boleto.h
 
-1510797792 c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\include\usuario.h
+1510803871 c:\users\a01281897\documents\github\proyecto-boletaje\proyectoboletaje\include\usuario.h
 	<string>
 
